@@ -1,7 +1,7 @@
 {
-  "name": "20ish Questions States Edition",
+  "name": "twentyQs",
   "version": "1.0.0",
-  "description": "",
+  "description": "20ish questions but for states",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "heroku": "^7.37.0",
-    "http": "0.0.0"
+    "heroku": "^7.37.0"
   }
 }
