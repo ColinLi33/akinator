@@ -1,9 +1,12 @@
 const express = require('express');
-const app = express();
-
-app.use(express.static('public'))
+const app = require('express')();
+const http = require('http').createServer(app);
+app.use(express.static('public'))''
 app.get('/', function(req, res) {
 	res.render(__dirname + './public/index.html');
+  res.render(__dirname + './public/twentyQ.js');
 });
 
-app.listen(process.env.PORT || 3333, () => console.log('Hosting on 3333'))
+http.listen(process.env.PORT || 3333, function() {
+	console.log('listening on 3333');
+});
