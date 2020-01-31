@@ -1,25 +1,121 @@
-const landlocked = new TreeNode('Is the state landlocked?');
-let currNode = null;
-landlocked.setLeft(new TreeNode('Is the state longer than 6 letters?'));
-landlocked.setRight(new TreeNode('Is the state longer than 6 letters?'));
-currNode = landlocked;
-let states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+//index 0 = state, index 1 = is it landlocked?, index 2 = democratic governor?, index 3 = population > 5 million, index 4 = length of name less than 8 letters? index 5 = does your state border canada, index 6 = does your state have 2 words index 7 = start with vowel
+var arr = [
+    ['Alabama', 0, 0, 0, 1, 0, 0, 1], ['Alaska', 0, 0, 0, 1, 1, 0, 1], ['Arizona', 1, 0, 1, 1, 0, 0, 1], ['Arkansas', 1, 0, 0, 0, 0, 0, 1], ['California', 0, 1, 1, 0, 0, 0, 0],
+    ['Colorado', 1, 1, 1, 0, 0, 0, 0], ['Connecticut', 0, 1, 0, 0, 0, 0, 0], ['Delaware', 0, 1, 0, 0, 0, 0, 0], ['Florida', 0, 0, 1, 1, 0, 0, 0], ['Georgia', 0, 0, 1, 1, 0, 0, 0],
+    ['Hawaii', 0, 1, 0, 1, 0, 0, 0], ['Idaho', 1, 0, 0, 1, 1, 0, 1], ['Illinois', 1, 1, 1, 0, 0, 0, 1], ['Indiana', 1, 0, 1, 1, 0, 0, 1], ['Iowa', 1, 0, 0, 1, 0, 0, 1], ['Kansas', 1, 1, 0, 1, 0, 0, 0],
+    ['Kentucky', 1, 1, 0, 0, 0, 0, 0], ['Louisiana', 0, 1, 0, 0, 0, 0, 0], ['Maine', 0, 1, 0, 1, 1, 0, 0], ['Maryland', 0, 0, 1, 0, 0, 0, 0], ['Massachusetts', 0, 0, 1, 0, 0, 0, 0],
+    ['Michigan', 1, 1, 1, 0, 1, 0, 0], ['Minnesota', 1, 1, 1, 1, 1, 0, 0], ['Mississippi', 0, 0, 0, 0, 0, 0, 0], ['Missouri', 1, 0, 1, 0, 0, 0, 0], ['Montana', 1, 1, 0, 1, 1, 0, 0],
+    ['Nebraska', 1, 0, 0, 0, 0, 0, 0], ['Nevada', 1, 1, 0, 1, 0, 0, 0], ['New Hampshire', 0, 0, 0, 0, 1, 1, 0], ['New Jersey', 0, 1, 1, 0, 0, 1, 0],
+    ['New Mexico', 1, 1, 0, 0, 0, 1, 0], ['New York', 0, 1, 1, 1, 1, 1, 0], ['North Carolina', 0, 1, 1, 0, 0, 1, 0], ['North Dakota', 1, 0, 0, 0, 1, 1, 0],
+    ['Ohio', 1, 0, 1, 1, 1, 0, 1], ['Oklahoma', 1, 0, 0, 0, 0, 0, 1], ['Oregon', 0, 1, 0, 1, 0, 0, 1], ['Pennsylvania', 1, 1, 1, 0, 1, 0, 0], ['Rhode Island', 0, 1, 0, 0, 0, 1, 0],
+    ['South Carolina', 0, 0, 1, 0, 0, 1, 0], ['South Dakota', 1, 0, 0, 0, 0, 1, 0], ['Tennessee', 1, 0, 1, 0, 0, 0, 0], ['Texas', 0, 0, 1, 1, 0, 0, 0], ['Utah', 1, 0, 0, 1, 0, 0, 1],
+    ['Vermont', 1, 0, 0, 1, 1, 0, 0], ['Virginia', 0, 1, 1, 0, 0, 0, 0], ['Washington', 0, 1, 1, 0, 1, 0, 0], ['West Virginia', 1, 0, 0, 0, 0, 1, 0], ['Wisconsin', 1, 1, 1, 0, 0, 0, 0],
+    ['Wyoming', 1, 0, 0, 1, 0, 0, 0]
+];
 
+let questions = ['Is your state landlocked?', 'Does your state have a Democratic governor?', 'Is the population of your state greater than 5 million?', "Is the length your state's name less than 8 letters?", "Does your state border Canada?", 'Does the name of your state have 2 words?', 'Does your state start with a vowel?'];
+let currQuest = 0;
 
+let yesButton = document.getElementById("yesButton");
+let noButton = document.getElementById("noButton");
+let question = document.getElementById("question");
+let state = document.getElementById("state");
+yesButton.style.display = "block";
+noButton.style.display = "block";
+question.style.display = "block";
+state.style.display = "none";
+question.innerHTML = questions[currQuest];
 
-document.getElementById("question").innerHTML = landlocked.getValue();
 
 function submitYes(){
-  setNextNode(true);
+  gameController(true, arr);
 }
-
 function submitNo(){
-  setNextNode(false);
+  gameController(false, arr);
 }
 
-function setNextNode(answer) {
-  if(yesinput)
-    currNode = currNode.getYes();
-  else
-    currNode = currNode.getNo();
+function gameController(answer, array){
+  if(answer){
+    array = isItemInArray(array, 0); //remove all states that answer no
+  } else {
+    array = isItemInArray(array, 1); //remove all states that answer yes
+  }
+  currQuest = findBestQ(array); //find the next best question to use
+  console.log(array.length);
+  if(checkWin(array)){ // check if theres only 1 state left
+    yesButton.style.display = "none";
+    noButton.style.display = "none";
+    question.style.display = "none";
+    state.style.display = "block";
+    document.getElementById("state").innerHTML = "The state that you are thinking if is " + array[0][0];
+
+  }
+  changeQuestion(currQuest); //change the question on screen;
+  console.log(array);
+}
+
+//finds all states that have item in it for the current question
+function isItemInArray(array, item) {
+  let spliceThis = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][currQuest + 1] == item) {
+          spliceThis.push(i);
+        }
+    }
+    for(let i = spliceThis.length - 1; i > -1 ;i--){
+      array = deleteRow(array, spliceThis[i]);
+    }
+    array = deleteCol(array, currQuest + 1);
+  return array;
+}
+//deletes state row
+function deleteRow(array, row) {
+   array.splice(row, 1);
+   return array;
+}
+
+function deleteCol(array, col){
+  for (let i = 0; i < array.length; i++) {
+        var row = array[i];
+        row.splice(col, 1);
+    }
+  return array;
+}
+
+function findBestQ(array){
+  //remove current question from question list so it doesn't happen twice
+  questions.splice(currQuest, 1);
+  let numberOfStates = array.length;
+  let questionYes = [];
+
+  //starts the counter for number of Yes
+  for(let i = 0; i < questions.length; i++){
+    questionYes.push(0);
+  }
+  //adds to questionYes array if element is
+  for(let i = 0; i < questions.length; i++){
+    for(let j = 0; j < numberOfStates; j++){
+      if (array[j][i + 1] == 1) {
+        questionYes[i] = questionYes[i] + 1;
+      }
+    }
+  }
+
+  let goal = Math.floor(numberOfStates / 2); //goal for yes
+  //finding closest value to goal so we can get the best question
+  let closest = questionYes.reduce(function(prev, curr) {
+    return (Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev);
+  });
+  return questionYes.indexOf(closest);
+}
+
+function changeQuestion(nextQ){
+  document.getElementById("question").innerHTML = questions[nextQ];
+}
+
+function checkWin(array){
+  if(array.length == 1){
+    return true;
+  }
+  return false;
 }
