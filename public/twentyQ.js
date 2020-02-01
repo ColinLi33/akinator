@@ -1,19 +1,19 @@
-//index 0 = state, index 1 = is it landlocked?, index 2 = democratic governor?, index 3 = population > 5 million, index 4 = length of name less than 8 letters? index 5 = does your state border canada, index 6 = does your state have 2 words index 7 = start with vowel
+//index 0 = state, index 1 = is it landlocked?, index 2 = democratic governor?, index 3 = population > 5 million, index 4 = length of name less than 8 letters? index 5 = does your state border canada, index 6 = does your state have 2 words index 7 = start with vowel, index 8 = end with vowel
 var arr = [
-    ['Alabama', 0, 0, 0, 1, 0, 0, 1], ['Alaska', 0, 0, 0, 1, 1, 0, 1], ['Arizona', 1, 0, 1, 1, 0, 0, 1], ['Arkansas', 1, 0, 0, 0, 0, 0, 1], ['California', 0, 1, 1, 0, 0, 0, 0],
-    ['Colorado', 1, 1, 1, 0, 0, 0, 0], ['Connecticut', 0, 1, 0, 0, 0, 0, 0], ['Delaware', 0, 1, 0, 0, 0, 0, 0], ['Florida', 0, 0, 1, 1, 0, 0, 0], ['Georgia', 0, 0, 1, 1, 0, 0, 0],
-    ['Hawaii', 0, 1, 0, 1, 0, 0, 0], ['Idaho', 1, 0, 0, 1, 1, 0, 1], ['Illinois', 1, 1, 1, 0, 0, 0, 1], ['Indiana', 1, 0, 1, 1, 0, 0, 1], ['Iowa', 1, 0, 0, 1, 0, 0, 1], ['Kansas', 1, 1, 0, 1, 0, 0, 0],
-    ['Kentucky', 1, 1, 0, 0, 0, 0, 0], ['Louisiana', 0, 1, 0, 0, 0, 0, 0], ['Maine', 0, 1, 0, 1, 1, 0, 0], ['Maryland', 0, 0, 1, 0, 0, 0, 0], ['Massachusetts', 0, 0, 1, 0, 0, 0, 0],
-    ['Michigan', 1, 1, 1, 0, 1, 0, 0], ['Minnesota', 1, 1, 1, 1, 1, 0, 0], ['Mississippi', 0, 0, 0, 0, 0, 0, 0], ['Missouri', 1, 0, 1, 0, 0, 0, 0], ['Montana', 1, 1, 0, 1, 1, 0, 0],
-    ['Nebraska', 1, 0, 0, 0, 0, 0, 0], ['Nevada', 1, 1, 0, 1, 0, 0, 0], ['New Hampshire', 0, 0, 0, 0, 1, 1, 0], ['New Jersey', 0, 1, 1, 0, 0, 1, 0],
-    ['New Mexico', 1, 1, 0, 0, 0, 1, 0], ['New York', 0, 1, 1, 1, 1, 1, 0], ['North Carolina', 0, 1, 1, 0, 0, 1, 0], ['North Dakota', 1, 0, 0, 0, 1, 1, 0],
-    ['Ohio', 1, 0, 1, 1, 1, 0, 1], ['Oklahoma', 1, 0, 0, 0, 0, 0, 1], ['Oregon', 0, 1, 0, 1, 0, 0, 1], ['Pennsylvania', 1, 1, 1, 0, 1, 0, 0], ['Rhode Island', 0, 1, 0, 0, 0, 1, 0],
-    ['South Carolina', 0, 0, 1, 0, 0, 1, 0], ['South Dakota', 1, 0, 0, 0, 0, 1, 0], ['Tennessee', 1, 0, 1, 0, 0, 0, 0], ['Texas', 0, 0, 1, 1, 0, 0, 0], ['Utah', 1, 0, 0, 1, 0, 0, 1],
-    ['Vermont', 1, 0, 0, 1, 1, 0, 0], ['Virginia', 0, 1, 1, 0, 0, 0, 0], ['Washington', 0, 1, 1, 0, 1, 0, 0], ['West Virginia', 1, 0, 0, 0, 0, 1, 0], ['Wisconsin', 1, 1, 1, 0, 0, 0, 0],
-    ['Wyoming', 1, 0, 0, 1, 0, 0, 0]
+    ['Alabama', 0, 0, 0, 1, 0, 0, 1, 1], ['Alaska', 0, 0, 0, 1, 1, 0, 1, 1], ['Arizona', 1, 0, 1, 1, 0, 0, 1, 1], ['Arkansas', 1, 0, 0, 0, 0, 0, 1, 0], ['California', 0, 1, 1, 0, 0, 0, 0, 1],
+    ['Colorado', 1, 1, 1, 0, 0, 0, 0, 1], ['Connecticut', 0, 1, 0, 0, 0, 0, 0, 0], ['Delaware', 0, 1, 0, 0, 0, 0, 0, 1], ['Florida', 0, 0, 1, 1, 0, 0, 0, 1], ['Georgia', 0, 0, 1, 1, 0, 0, 0, 1],
+    ['Hawaii', 0, 1, 0, 1, 0, 0, 0, 1], ['Idaho', 1, 0, 0, 1, 1, 0, 1, 1], ['Illinois', 1, 1, 1, 0, 0, 0, 1, 0], ['Indiana', 1, 0, 1, 1, 0, 0, 1, 1], ['Iowa', 1, 0, 0, 1, 0, 0, 1, 1], ['Kansas', 1, 1, 0, 1, 0, 0, 0, 0],
+    ['Kentucky', 1, 1, 0, 0, 0, 0, 0, 0], ['Louisiana', 0, 1, 0, 0, 0, 0, 0, 1], ['Maine', 0, 1, 0, 1, 1, 0, 0, 1], ['Maryland', 0, 0, 1, 0, 0, 0, 0, 0], ['Massachusetts', 0, 0, 1, 0, 0, 0, 0, 0],
+    ['Michigan', 1, 1, 1, 0, 1, 0, 0, 0], ['Minnesota', 1, 1, 1, 1, 1, 0, 0, 1], ['Mississippi', 0, 0, 0, 0, 0, 0, 0, 1], ['Missouri', 1, 0, 1, 0, 0, 0, 0, 1], ['Montana', 1, 1, 0, 1, 1, 0, 0, 1],
+    ['Nebraska', 1, 0, 0, 0, 0, 0, 0, 1], ['Nevada', 1, 1, 0, 1, 0, 0, 0, 1], ['New Hampshire', 0, 0, 0, 0, 1, 1, 0, 1], ['New Jersey', 0, 1, 1, 0, 0, 1, 0, 0],
+    ['New Mexico', 1, 1, 0, 0, 0, 1, 0, 1], ['New York', 0, 1, 1, 1, 1, 1, 0, 0], ['North Carolina', 0, 1, 1, 0, 0, 1, 0, 1], ['North Dakota', 1, 0, 0, 0, 1, 1, 0, 1],
+    ['Ohio', 1, 0, 1, 1, 1, 0, 1, 0], ['Oklahoma', 1, 0, 0, 0, 0, 0, 1, 1], ['Oregon', 0, 1, 0, 1, 0, 0, 1, 0], ['Pennsylvania', 1, 1, 1, 0, 1, 0, 0, 1], ['Rhode Island', 0, 1, 0, 0, 0, 1, 0, 0],
+    ['South Carolina', 0, 0, 1, 0, 0, 1, 0, 1], ['South Dakota', 1, 0, 0, 0, 0, 1, 0, 1], ['Tennessee', 1, 0, 1, 0, 0, 0, 0, 1], ['Texas', 0, 0, 1, 1, 0, 0, 0, 0], ['Utah', 1, 0, 0, 1, 0, 0, 1, 0],
+    ['Vermont', 1, 0, 0, 1, 1, 0, 0, 0], ['Virginia', 0, 1, 1, 0, 0, 0, 0, 1], ['Washington', 0, 1, 1, 0, 1, 0, 0, 0], ['West Virginia', 1, 0, 0, 0, 0, 1, 0, 1], ['Wisconsin', 1, 1, 1, 0, 0, 0, 0, 0],
+    ['Wyoming', 1, 0, 0, 1, 0, 0, 0, 0]
 ];
 
-let questions = ['Is your state landlocked?', 'Does your state have a Democratic governor?', 'Is the population of your state greater than 5 million?', "Is the length your state's name less than 8 letters?", "Does your state border Canada?", 'Does the name of your state have 2 words?', 'Does your state start with a vowel?'];
+let questions = ['Is your state landlocked?', 'Does your state have a Democratic governor?', 'Is the population of your state greater than 5 million?', "Is the length your state's name less than 8 letters?", "Does your state border Canada?", 'Does the name of your state have 2 words?', 'Does your state start with a vowel?', 'Does your state end with a vowel (Y is not a vowel)?'];
 let currQuest = 0;
 
 let yesButton = document.getElementById("yesButton");
