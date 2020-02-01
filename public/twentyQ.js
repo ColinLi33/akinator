@@ -47,7 +47,7 @@ function gameController(answer, array){
     noButton.style.display = "none";
     question.style.display = "none";
     state.style.display = "block";
-    document.getElementById("state").innerHTML = "The state that you are thinking if is " + array[0][0];
+    document.getElementById("state").innerHTML = "The state that you are thinking of is " + array[0][0];
 
   }
   changeQuestion(currQuest); //change the question on screen;
