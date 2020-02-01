@@ -1,4 +1,5 @@
 //index 0 = state, index 1 = is it landlocked?, index 2 = democratic governor?, index 3 = population > 5 million, index 4 = length of name less than 8 letters? index 5 = does your state border canada, index 6 = does your state have 2 words index 7 = start with vowel, index 8 = end with vowel
+//states that work: alabama, alaska,
 var arr = [
     ['Alabama', 0, 0, 0, 1, 0, 0, 1, 1], ['Alaska', 0, 0, 0, 1, 1, 0, 1, 1], ['Arizona', 1, 0, 1, 1, 0, 0, 1, 1], ['Arkansas', 1, 0, 0, 0, 0, 0, 1, 0], ['California', 0, 1, 1, 0, 0, 0, 0, 1],
     ['Colorado', 1, 1, 1, 0, 0, 0, 0, 1], ['Connecticut', 0, 1, 0, 0, 0, 0, 0, 0], ['Delaware', 0, 1, 0, 0, 0, 0, 0, 1], ['Florida', 0, 0, 1, 1, 0, 0, 0, 1], ['Georgia', 0, 0, 1, 1, 0, 0, 0, 1],
