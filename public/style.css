@@ -1,9 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
 body{
   background:lightblue;
   text-align:center;
   box-sizing:border-box;
   font-family: "Lato", -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
 }
+
+
+
+
 
 .development {
   position: absolute;
@@ -13,18 +18,29 @@ body{
   margin: auto;
   left: 0;
   right: 0;
-  font-family: Courier;
+  font-family: 'Righteous', cursive;
 }
 
 .yesbox{
   position:absolute;
+  font-family: 'Righteous', cursive;
   top:40%;
   left:50%;
   transform : translate(-50% ,-50%);
 }
 .nobox{
   position:absolute;
+  font-family: 'Righteous', cursive;
   top:60%;
+  left:50%;
+  transform : translate(-50% ,-50%);
+}
+
+.numb{
+  position: relative;
+  font-family: 'Righteous', cursive;
+  font-size: 30px;
+  color: black;
   left:50%;
   transform : translate(-50% ,-50%);
 }
@@ -98,12 +114,13 @@ body{
 
 .gradient-multiline {
   position: relative;
-  width: 300px;
+  width: 400px;
   margin: 40px auto;
   background-color: #fff;
   text-align: center;
   line-height: 1.5em;
   overflow:hidden;
+  font-family: 'Righteous', cursive;
 }
 
 .gradient-multiline span {

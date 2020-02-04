@@ -11,6 +11,7 @@ noButton.style.display = "block";
 question.style.display = "block";
 state.style.display = "none";
 question.innerHTML = questions[currQuest];
+remainingstates.innerHTML = "Remaining states: " + arr.length;
 
 
 function submitYes() {
@@ -35,6 +36,7 @@ function gameController(answer, array) {
 		document.getElementById("state").innerHTML = "The state that you are thinking of is " + array[0][0];
 	}
 	currQuest = findBestQ(array); //find the next best question to use
+	remainingstates.innerHTML = "Remaining states: " + arr.length;
   if(currQuest == -1){
     yesButton.style.display = "none";
 		noButton.style.display = "none";
